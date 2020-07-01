@@ -1,0 +1,124 @@
+{% load staticfiles %}
+{% include 'base/header.html' %}
+<div class="profilePage"></div>
+<div class="layout-content">
+    <div class="layout-content-body">
+        <div class="title-bar">
+
+            <h1 class="title-bar-title">
+              <span class="d-ib">Edit Admin Profile</span>
+            </h1>
+        </div>
+        <div class="row gutter-xs">
+            <div class="col-md-8 card panel-body" style="box-shadow: 0px 0px 14px #999;">
+                <div class="col-sm-12 col-md-12">
+                    <div class="demo-form-wrapper">
+                        <form class="form form-horizontal" action="/ad/accounts/profile/edit/" method="POST" enctype='multipart/form-data'>
+                          {% csrf_token %}
+                            <div class="form-group">
+                             <div class="col-md-6">
+                              <label class=" control-label">Name</label>
+                              <input id="" class="form-control" name="name" value="{{name}}" type="text">
+                             </div>
+                             <div class="col-md-6">
+                              <label class=" control-label">Mobile</label>
+                              <input id="" class="form-control" value="{{mobile}}" name="phonenumber" type="text">
+                              {% if form.errors %}
+                   						<p style="color:red;">{{ form.phonenumber.errors.as_text |cut:"* "}}<p>
+                    					{% endif %}
+                             </div>
+                            </div>
+                            <div class="form-group">
+                             <div class="col-md-6 add-pic">
+                              <label class=" control-label">Add Image</label>
+                              <div class="pic-box">
+                                <div class="logoImg">
+                                  {% if profile_image %}
+      							                <img src="{{profile_image.url}}" id="result1">
+      							              {% else %}
+                                    <img src="{% static 'admin_panel/img/3002121059.jpg' %}" id="result">
+                                  {% endif %}
+                                 <input id="logo-file" type="file" name='profileimg' class="hide">
+                                 <label for="logo-file" class="btn btn-large"></label>
+                                </div>
+                              </div>
+                             </div>
+                            </div>
+                            <div class="form-group">
+                             <div class="col-md-6">
+                              <label class=" control-label">Email ID</label>
+                              <input id="" class="form-control" name="email" value="{{email}}" type="text">
+                              {% if form.errors %}
+                                <br>
+                     						<p style="color:red;">{{ form.email.errors.as_text |cut:"* "}}<p>
+                      				{% endif %}
+                             </div>
+                             <!-- <div class="col-md-6">
+                              <label class=" control-label">City</label>
+                              <input id="" class="form-control" type="text">
+                             </div> -->
+                            </div>
+                            <div class="form-group">
+                              <div class="col-md-12">
+                                <label for="about" class="control-label">About</label>
+                                <textarea id="" name="about" class="form-control" rows="3">{{about|default_if_none:''}}</textarea>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                                <div class=" col-sm-8  col-md-8 ">
+                                    <!-- Button trigger modal -->
+                                    <button type="submit" class="btn btn-primary">
+                                      <!-- data-toggle="modal" data-target="#exampleModalLong" -->
+                                      Submit
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<!-- Modal -->
+  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog modal-sm" data-dismiss="modal" role="document">
+      <div class="modal-content">
+
+        <div class="modal-body">
+          <h4>Your profile has been updated successfully.</h4>
+          <div class="successful-icon">
+                <i class="far fa-check-square"></i>
+            </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<!-- Modal END-->
+{% include 'base/footer.html' %}
+<script type="text/javascript">
+              $(document).ready(function(){
+               $("#logo-file").change(function(e){
+                var img = e.target.files[0];
+                if(!iEdit.open(img, true, function(res){
+                 $("#result").attr("src", res);
+                })){
+                  alert("Whoops! That is not an image!");
+                }
+               });
+               $(document).on("click",".add-facility .plus-btn",function() {
+                $('.add-facility .facility-box').append('\
+                   <div class="col-md-6">\
+                    <input id="" class="form-control" type="date">\
+                    <span class="del">x</span>\
+                   </div>');
+                  $(".add-facility .del").on('click',function(){
+                    $(this).parent('.col-md-6').remove();
+                  });
+              });
+              });
+            </script>

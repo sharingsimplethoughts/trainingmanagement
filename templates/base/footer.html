@@ -1,0 +1,117 @@
+{% load staticfiles %}
+<div class="layout-footer">
+    <div class="layout-footer-body">
+        <small class="copyright">2019 &copy; Training Solution</small>
+    </div>
+</div>
+</div>
+  <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> -->
+  <script src="{% static 'admin_panel/js/jquery.min.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.1/js/bootstrap-datepicker.min.js"></script>
+  <script src="{% static 'admin_panel/js/vendor.min.js' %}"></script>
+  <script src="{% static 'admin_panel/js/elephant.min.js' %}"></script>
+  <script src="{% static 'admin_panel/js/application.min.js' %}"></script>
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"> </script>
+  <script src="{% static 'admin_panel/js/iEdit.js' %}"></script>
+  <script src="{% static 'admin_panel/js/profile.min.js' %}"></script>
+  <script src="{% static 'admin_panel/js/demo.min.js' %}"></script>
+
+    <script type="text/javascript">
+    $(window).load(function(){
+
+      // For Driver Page
+      if ( $('.profilePage').length ) {
+        $('.sidenav-item').removeClass("active");
+        $('.profilePageNav').addClass("active");
+      }
+      if ( $('.dashboardPage').length ) {
+        $('.sidenav-item').removeClass("active");
+        $('.dashboardPageNav').addClass("active");
+      }
+      if ( $('.categoryPage').length ) {
+        $('.sidenav-item').removeClass("active");
+        $('.categoryPageNav').addClass("active");
+      }
+      if ( $('.productPage').length ) {
+        $('.sidenav-item').removeClass("active");
+        $('.productPageNav').addClass("active");
+      }
+      if ( $('.postmanagementPage').length ) {
+        $('.sidenav-item').removeClass("active");
+        $('.postmanagementPageNav').addClass("active");
+      }
+      if ( $('.invoicePage').length ) {
+        $('.sidenav-item').removeClass("active");
+        $('.invoicePageNav').addClass("active");
+      }
+      if ( $('.subscriptionPage').length ) {
+        $('.sidenav-item').removeClass("active");
+        $('.subscriptionPageNav').addClass("active");
+      }
+      if ( $('.trainingPage').length ) {
+        $('.sidenav-item').removeClass("active");
+        $('.trainingPageNav').addClass("active");
+      }
+      if ( $('.paymentPage').length ) {
+        $('.sidenav-item').removeClass("active");
+        $('.paymentPageNav').addClass("active");
+      }
+      if ( $('.reportgenerationPage').length ) {
+        $('.sidenav-item').removeClass("active");
+        $('.reportgenerationPageNav').addClass("active");
+      }
+      if ( $('.settingsPage').length ) {
+        $('.sidenav-item').removeClass("active");
+        $('.settingsPageNav').addClass("active");
+      }
+      if ( $('.spamPage').length ) {
+        $('.sidenav-item').removeClass("active");
+        $('.spamPageNav').addClass("active");
+      }
+      if ( $('.subadminPage').length ) {
+        $('.sidenav-item').removeClass("active");
+        $('.subadminPageNav').addClass("active");
+      }
+      if ( $('.userListPage').length ) {
+        $('.sidenav-item').removeClass("active");
+        $('.accNav-a').addClass("active");
+        $('.accountNav').addClass("open");
+        $('.accountNav ul').css("display","block");
+      }
+      if ( $('.restaurantPage').length ) {
+        $('.sidenav-item').removeClass("active");
+        $('.accNav-b').addClass("active");
+        $('.accountNav').addClass("open");
+        $('.accountNav ul').css("display","block");
+      }
+      if ( $('.rest-profilePage').length ) {
+        $('.sidenav-item').removeClass("active");
+        $('.accNav-b').addClass("active");
+        $('.accountNav').addClass("open");
+        $('.accountNav ul').css("display","block");
+      }
+
+
+
+    });
+            $(window).scroll(function (){
+                var window_top = $(window).scrollTop();
+                var div_top = $('.tabs-new').position().top;
+                console.log(window_top);
+                console.log(div_top);
+                if (window_top > div_top) {
+                    $('.tabs-new').addClass('stick');
+                    $('.tabs-new').parents('.layout-content-body').removeClass('layout-content-body').addClass('layout-content-body-dummy');
+                } else {
+                    $('.tabs-new').parents('.layout-content-body').removeClass('layout-content-body-dummy').addClass('layout-content-body')
+                }
+                if ( window_top < 74 ) {
+                  $('.tabs-new').removeClass('stick');
+                }
+            });
+
+    </script>
+  </body>
+</html>
